@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5520939526955740421}
   - component: {fileID: 8497016193824580055}
   - component: {fileID: 3823079125216246164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cow
   m_TagString: Lassoable
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -189,5 +189,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae909bed6bf30f4e89f2951f1465991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 7
   facingRight: 0

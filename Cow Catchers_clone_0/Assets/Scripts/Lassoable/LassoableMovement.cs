@@ -4,17 +4,12 @@ public class LassoableMovement : MonoBehaviour
 {
     [SerializeField] float speed = 1f;
     [SerializeField] bool facingRight;
-    float xSpeed;
-    float ySpeed;
     Vector2 direction;
     SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        xSpeed = speed;
-        ySpeed = speed;
 
         RandomizeDirection();
 
@@ -31,17 +26,15 @@ public class LassoableMovement : MonoBehaviour
 
     void RandomizeDirection()
     {
-        float x = Random.Range(0f, 360f);
-        float y = Random.Range(0f, 460f);
+        float x = Random.Range(-1f, 1f);
+        float y = Random.Range(-1f, 1f);
 
-        direction = new Vector2(x, y);
+        direction = new Vector2(x, y).normalized;
     }
 
     void Move()
     {
-        float offset = 0.001f;
-
-        transform.Translate(direction * speed * offset * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
