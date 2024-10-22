@@ -68,7 +68,6 @@ public class Line : MonoBehaviour
     {
         PolygonCollider2D polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
         polygonCollider.isTrigger = true;
-        polygonCollider.gameObject.AddComponent<LassoZone>();
 
         Vector3[] linePositions = new Vector3[lineRenderer.positionCount];
         lineRenderer.GetPositions(linePositions);
@@ -77,19 +76,9 @@ public class Line : MonoBehaviour
 
         for (int i = 0; i < linePositions.Length; i++)
         {
-            for (int j = i + 1; j < linePositions.Length; j++)
-            {
-                if (Vector3.Distance(linePositions[i], linePositions[j]) < closureThreshold)
-                {
-                    for (int k = i; k <= j; k++)
-                    {
-                        enclosedPoints.Add(new Vector2(linePositions[k].x, linePositions[k].y));
-                    }
-
-                    polygonCollider.points = enclosedPoints.ToArray();
-                    return;
-                }
-            }
+            enclosedPoints.Add(new Vector2(linePositions[i].x, linePositions[i].y));
         }
+
+        polygonCollider.points = enclosedPoints.ToArray();
     }
 }
