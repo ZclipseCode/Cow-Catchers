@@ -6,6 +6,7 @@ public class Line : MonoBehaviour
     LineRenderer lineRenderer;
     float closureThreshold = 0.1f;
     bool enclosureCreated;
+    PlayerInfo playerInfo;
 
     private void Start()
     {
@@ -80,5 +81,10 @@ public class Line : MonoBehaviour
         }
 
         polygonCollider.points = enclosedPoints.ToArray();
+
+        LassoZone lassoZone = polygonCollider.gameObject.GetComponent<LassoZone>();
+        lassoZone.SetPlayerInfo(playerInfo);
     }
+
+    public void SetPlayerInfo(PlayerInfo value) => playerInfo = value;
 }
